@@ -8,6 +8,10 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 20;
 
+  @include md {
+    padding: 0 40px;
+  }
+
   .header-content {
     display: flex;
     justify-content: space-between;
@@ -16,10 +20,19 @@
     max-width: 1300px;
     margin: 0 auto;
 
+    @include md {
+      height: 80px;
+    }
+
     .left {
       list-style-type: none;
-      display: flex;
+      display: none;
       gap: 1rem;
+
+      @include md {
+        display: flex;
+      }
+
       li {
         font-size: 14px;
         text-transform: uppercase;
@@ -32,15 +45,31 @@
       font-size: 22px;
       font-weight: 700;
       text-transform: uppercase;
+
+      @include md {
+        font-size: 34px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
     .right {
       display: flex;
       gap: 20px;
       align-items: center;
+
+      @include md {
+        gap: 24px;
+      }
+
       svg {
         font-size: 20px;
         cursor: pointer;
+
+        @include md {
+          font-size: 25px;
+        }
       }
       .cart-icon {
         position: relative;
