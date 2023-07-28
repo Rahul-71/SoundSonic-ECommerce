@@ -1,6 +1,12 @@
+import Banner from "./Banner/Banner";
+
 import "./Home.scss";
 const Home = () => {
-  return <div style={{ height: "2000px" }}>Home</div>;
+  return (
+    <div className="home">
+      <Banner />
+    </div>
+  );
 };
 
 export default Home;
