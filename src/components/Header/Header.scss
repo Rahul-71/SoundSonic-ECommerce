@@ -88,4 +88,19 @@
       }
     }
   }
+
+  &.stickyHeader {
+    position: sticky;
+    top: 0px;
+    animation: stickyHeaderAnimation 0.3s forwards ease;
+  }
+}
+
+@keyframes stickyHeaderAnimation {
+  0% {
+    transform: translateY(-80px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
