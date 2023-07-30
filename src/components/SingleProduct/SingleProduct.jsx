@@ -1,4 +1,3 @@
-import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import {
   FaCartPlus,
   FaFacebookF,
@@ -7,8 +6,11 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
-import "./SingleProduct.scss";
 import prodImg from "../../assets/products/earbuds-prod-1.webp";
+import RelatedProducts from "./RelatedProducts/RelatedProducts";
+
+import "./SingleProduct.scss";
+
 const SingleProduct = () => {
   return (
     <div className="single-product-main-content">
@@ -39,7 +41,7 @@ const SingleProduct = () => {
             <div className="info-item">
               <span className="text-bold">
                 Category:
-                <span>Headphones</span>
+                <span> Headphones</span>
               </span>
               <span className="text-bold">
                 Share:
@@ -54,6 +56,7 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
+
         <RelatedProducts />
       </div>
     </div>
