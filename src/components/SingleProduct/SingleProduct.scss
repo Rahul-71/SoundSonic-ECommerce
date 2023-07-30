@@ -123,6 +123,9 @@
             @include md {
               flex-grow: unset;
             }
+            svg {
+              margin-right: 10px;
+            }
           }
         }
 
