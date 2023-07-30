@@ -1,12 +1,14 @@
-import { BiSearch, BiHeart, BiCart } from "react-icons/bi";
+import { BiCart, BiHeart, BiSearch } from "react-icons/bi";
 
-import "./Header.scss";
 import { useEffect, useState } from "react";
 import Cart from "../Cart/Cart";
+import Search from "../Header/Search/Search";
+import "./Header.scss";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleScrolled = () => {
     const scrollOffset = window.scrollY;
@@ -29,7 +31,7 @@ const Header = () => {
           </ul>
           <div className="center">Sound Sonic</div>
           <div className="right">
-            <BiSearch />
+            <BiSearch onClick={() => setShowSearch(!showSearch)} />
             <BiHeart />
             <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
               <BiCart />
@@ -39,6 +41,7 @@ const Header = () => {
         </div>
       </header>
       {showCart && <Cart setShowCart={setShowCart} />}
+      {showSearch && <Search setShowSearch={setShowSearch} />}
     </>
   );
 };
