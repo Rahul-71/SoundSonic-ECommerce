@@ -4,7 +4,7 @@ const Category = ({ categories }) => {
   return (
     <div className="shop-by-category">
       <div className="categories">
-        {categories.data.map((category) => (
+        {categories.data?.map((category) => (
           <div key={category.id} className="category">
             <img
               src={
