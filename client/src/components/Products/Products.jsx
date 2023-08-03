@@ -5,7 +5,7 @@ const Products = ({ products, innerPage, headingText }) => {
     <div className="products-container">
       {!innerPage && <div className="sec-heading">{headingText}</div>}
       <div className="products">
-        {products.data?.map((product) => (
+        {products?.data?.map((product) => (
           <Product
             key={product.id}
             id={product.id}
