@@ -1,23 +1,20 @@
-import cat1 from "../../assets/category/cat-1.jpg";
-
 import "./Category.scss";
 
-const Category = () => {
+const Category = ({ categories }) => {
   return (
     <div className="shop-by-category">
       <div className="categories">
-        <div className="category">
-          <img src={cat1} alt="" />
-        </div>
-        <div className="category">
-          <img src={cat1} alt="" />
-        </div>
-        <div className="category">
-          <img src={cat1} alt="" />
-        </div>
-        <div className="category">
-          <img src={cat1} alt="" />
-        </div>
+        {categories.data.map((category) => (
+          <div key={category.id} className="category">
+            <img
+              src={
+                process.env.REACT_APP_DEV_APP_KEY +
+                category.attributes.img.data.attributes.url
+              }
+              alt=""
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
