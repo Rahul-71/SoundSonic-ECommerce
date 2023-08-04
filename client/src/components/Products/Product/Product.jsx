@@ -5,8 +5,8 @@ import "./Product.scss";
 const Product = ({ id, prodData }) => {
   const navigate = useNavigate();
 
-  console.log("prodData in products");
-  console.log(prodData);
+  // console.log("prodData in products");
+  // console.log(prodData);
 
   return (
     <div className="product-card" onClick={() => navigate("/product/" + id)}>
