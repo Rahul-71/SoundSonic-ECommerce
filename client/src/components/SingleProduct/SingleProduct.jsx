@@ -38,7 +38,7 @@ const SingleProduct = () => {
   let prodImg = prodData.img.data[0].attributes;
 
   // getting product category data from prodData
-  let catgData = prodData.categories.data[0].attributes;
+  let catgData = prodData.categories.data[0];
 
   return (
     <div className="single-product-main-content">
@@ -69,7 +69,7 @@ const SingleProduct = () => {
             <div className="info-item">
               <span className="text-bold">
                 Category:
-                <span> {catgData.title}</span>
+                <span> {catgData.attributes.title}</span>
               </span>
               <span className="text-bold">
                 Share:
@@ -85,7 +85,7 @@ const SingleProduct = () => {
           </div>
         </div>
 
-        <RelatedProducts />
+        <RelatedProducts categoryId={catgData.id} productId={id} />
       </div>
     </div>
   );
