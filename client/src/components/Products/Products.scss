@@ -12,14 +12,16 @@
     font-weight: 500;
     text-transform: uppercase;
     @include md {
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       font-size: 24px;
+      // margin-bottom: 30px;
+      // font-size: 24px;
     }
 
     &::after {
       content: "";
       display: block;
-      width: 60px;
+      width: 50px;
       height: 3px;
       background-color: #8e2de2;
       margin-top: 5px;
@@ -32,7 +34,9 @@
   .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 2;
+    gap: 10px;
+    @include md {
+      gap: 20px;
+    }
   }
 }
