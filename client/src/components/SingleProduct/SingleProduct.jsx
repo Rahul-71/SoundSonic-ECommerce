@@ -6,25 +6,38 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
-// import prodImg from "../../assets/products/earbuds-prod-1.webp";
 import useFetch from "../../hooks/useFetch";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./SingleProduct.scss";
 
 const SingleProduct = () => {
   const { id } = useParams();
 
+  const [quantity, setQuantity] = useState(1);
+
+  const increment = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+  const decrement = () => {
+    setQuantity((prevQuantity) => {
+      if (prevQuantity === 1) return 1;
+      return prevQuantity - 1;
+    });
+  };
+
   // fetch the product based on prodId
   let prodData = useFetch(`/api/products/${id}?populate=*`);
 
   if (!prodData) return; // won't proceed further until recieve the product response
-
   prodData = prodData.data.attributes;
 
+  // getting product img data from prodData
   let prodImg = prodData.img.data[0].attributes;
 
+  // getting product category data from prodData
   let catgData = prodData.categories.data[0].attributes;
 
   return (
@@ -41,9 +54,9 @@ const SingleProduct = () => {
 
             <div className="cart-buttons">
               <div className="quantity-buttons">
-                <span>-</span>
-                <span>5</span>
-                <span>+</span>
+                <span onClick={decrement}>-</span>
+                <span>{quantity}</span>
+                <span onClick={increment}>+</span>
               </div>
               <div className="add-to-cart-button">
                 <FaCartPlus size={20} />
