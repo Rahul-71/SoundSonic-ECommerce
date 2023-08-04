@@ -1,14 +1,18 @@
-import { BiCart, BiHeart, BiSearch } from "react-icons/bi";
-
 import { useEffect, useState } from "react";
+import { BiCart, BiHeart, BiSearch } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+
 import Cart from "../Cart/Cart";
 import Search from "../Header/Search/Search";
+
 import "./Header.scss";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleScrolled = () => {
     const scrollOffset = window.scrollY;
@@ -25,11 +29,13 @@ const Header = () => {
       <header className={`main-header ${scrolled ? "stickyHeader" : ""}`}>
         <div className="header-content">
           <ul className="left">
-            <li>Home</li>
+            <li onClick={() => navigate("/")}>Home</li>
             <li>About</li>
             <li>Categories</li>
           </ul>
-          <div className="center">Sound Sonic</div>
+          <div className="center" onClick={() => navigate("/")}>
+            Sound Sonic
+          </div>
           <div className="right">
             <BiSearch onClick={() => setShowSearch(!showSearch)} />
             <BiHeart />
