@@ -1,13 +1,13 @@
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
-import prodImg from "../../../assets/products/earbuds-prod-1.webp";
-
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 
 import "./Search.scss";
-import { useEffect, useState } from "react";
 
 const Search = ({ setShowSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   let searchResponse = useFetch(
     `/api/products?populate=*&filters[title][$contains]=${searchQuery}`
@@ -16,8 +16,8 @@ const Search = ({ setShowSearch }) => {
   if (!searchQuery.length) {
     searchResponse = [];
   }
-  console.log("search response");
-  console.log(searchResponse);
+  // console.log("search response");
+  // console.log(searchResponse);
 
   return (
     <div className="search-modal">
@@ -35,7 +35,14 @@ const Search = ({ setShowSearch }) => {
       <div className="search-result-content">
         <div className="search-results">
           {searchResponse?.data?.map((item) => (
-            <div className="search-result-item">
+            <div
+              key={item.id}
+              className="search-result-item"
+              onClick={() => {
+                navigate(`/product/${item.id}`);
+                setShowSearch(false);
+              }}
+            >
               <div className="img-container">
                 <img
                   src={
