@@ -44,7 +44,7 @@ const Header = () => {
             <BiHeart />
             <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
               <BiCart />
-              <span>{cartCount}</span>
+              {!!cartCount && <span>{cartCount}</span>}
             </span>
           </div>
         </div>
