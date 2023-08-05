@@ -1,7 +1,15 @@
+import { useContext } from "react";
+import { BsCartX } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
-import "./Cart.scss";
+
+import { Context } from "../../utils/context";
 import CartItem from "./CartItem/CartItem";
+
+import "./Cart.scss";
+
 const Cart = ({ setShowCart }) => {
+  const { cartSubTotal } = useContext(Context);
+
   return (
     <div className="cart-panel">
       <div
@@ -19,24 +27,30 @@ const Cart = ({ setShowCart }) => {
           </span>
         </div>
 
-        {/* <div className="empty-cart">
-          <BsCartX />
-          <span>No products in the cart.</span>
-          <button className="return-cta">RETURN TO SHOP</button>
-        </div> */}
-
-        <>
-          <CartItem />
-          <div className="cart-footer">
-            <div className="subtotal">
-              <span className="text">Subtotal: </span>
-              <span className="text total"> ₹4999</span>
-            </div>
-            <div className="button">
-              <button className="return-cta">Proceed to Checkout</button>
-            </div>
+        {!(cartSubTotal > 0) && (
+          <div className="empty-cart">
+            <BsCartX />
+            <span>No products in the cart.</span>
+            <button className="return-cta" onClick={() => setShowCart(false)}>
+              RETURN TO SHOP
+            </button>
           </div>
-        </>
+        )}
+
+        {cartSubTotal > 0 && (
+          <>
+            <CartItem />
+            <div className="cart-footer">
+              <div className="subtotal">
+                <span className="text">Subtotal: </span>
+                <span className="text total"> {`₹ ${cartSubTotal}`}</span>
+              </div>
+              <div className="button">
+                <button className="return-cta">Proceed to Checkout</button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
