@@ -9,14 +9,15 @@ import {
 import useFetch from "../../hooks/useFetch";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./SingleProduct.scss";
+import { Context } from "../../utils/context";
 
 const SingleProduct = () => {
   const { id } = useParams();
-
   const [quantity, setQuantity] = useState(1);
+  const context = useContext(Context);
 
   const increment = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -32,13 +33,13 @@ const SingleProduct = () => {
   let prodData = useFetch(`/api/products/${id}?populate=*`);
 
   if (!prodData) return; // won't proceed further until recieve the product response
-  prodData = prodData.data.attributes;
+  prodData = prodData.data;
 
   // getting product img data from prodData
-  let prodImg = prodData.img.data[0].attributes;
+  let prodImg = prodData.attributes.img.data[0].attributes;
 
-  // getting product category data from prodData
-  let catgData = prodData.categories.data[0];
+  // getting product category data from prodData.attributes
+  let catgData = prodData.attributes.categories.data[0];
 
   return (
     <div className="single-product-main-content">
@@ -48,9 +49,9 @@ const SingleProduct = () => {
             <img src={process.env.REACT_APP_DEV_APP_KEY + prodImg.url} alt="" />
           </div>
           <div className="right">
-            <span className="name">{prodData.title}</span>
-            <span className="price">{"₹" + prodData.price}</span>
-            <span className="desc">{prodData.desc}</span>
+            <span className="name">{prodData.attributes.title}</span>
+            <span className="price">{"₹" + prodData.attributes.price}</span>
+            <span className="desc">{prodData.attributes.desc}</span>
 
             <div className="cart-buttons">
               <div className="quantity-buttons">
@@ -58,7 +59,13 @@ const SingleProduct = () => {
                 <span>{quantity}</span>
                 <span onClick={increment}>+</span>
               </div>
-              <div className="add-to-cart-button">
+              <div
+                className="add-to-cart-button"
+                onClick={() => {
+                  context.handleAddToCart(prodData, quantity);
+                  setQuantity(1);
+                }}
+              >
                 <FaCartPlus size={20} />
                 ADD TO CART
               </div>

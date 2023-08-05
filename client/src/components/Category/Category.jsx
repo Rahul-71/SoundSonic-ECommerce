@@ -11,14 +11,15 @@ const Category = () => {
     `/api/products?populate=*&[filters][categories][id]=${id}`
   );
 
+  if (!prodData) return;
+
   // console.log("products filtered by category id ::");
   // console.log(prodData);
 
   // console.log(
-  //   prodData?.data?.[0]?.attributes?.categories?.data?.[0]?.attributes
+  //   prodData.data.[0].attributes.categories.data.[0].attributes
   // );
-  const title =
-    prodData?.data?.[0]?.attributes?.categories?.data?.[0]?.attributes?.title;
+  const title = prodData.data[0].attributes.categories.data[0].attributes.title;
 
   return (
     <div className="category-main-content">
