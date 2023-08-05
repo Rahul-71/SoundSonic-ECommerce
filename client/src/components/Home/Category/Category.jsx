@@ -15,7 +15,7 @@ const Category = ({ categories }) => {
           >
             <img
               src={
-                process.env.REACT_APP_DEV_APP_KEY +
+                process.env.REACT_APP_DEV_APP_URL +
                 category.attributes.img.data.attributes.url
               }
               alt=""

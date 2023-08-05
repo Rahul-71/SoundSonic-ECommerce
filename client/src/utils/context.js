@@ -22,7 +22,7 @@ const AppContext = ({ children }) => {
     // updating subtotal
     let subTotal = 0;
     let count = 0;
-    cartItems.map((item) => {
+    cartItems.forEach((item) => {
       subTotal += item.attributes.price * item.attributes.quantity;
       count += item.attributes.quantity;
     });

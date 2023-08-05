@@ -13,7 +13,7 @@ const Product = ({ id, prodData }) => {
       <div key={id} className="thumbnail">
         <img
           src={
-            process.env.REACT_APP_DEV_APP_KEY +
+            process.env.REACT_APP_DEV_APP_URL +
             prodData.img.data[0].attributes.url
           }
           alt=""
