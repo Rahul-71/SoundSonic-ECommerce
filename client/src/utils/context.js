@@ -11,11 +11,15 @@ const AppContext = ({ children }) => {
   const [cartSubTotal, setCartSubTotal] = useState(0);
 
   useEffect(() => {
+    // updating subtotal
     let subTotal = 0;
-    cartItems.map(
-      (item) => (subTotal += item.attributes.price * item.attributes.quantity)
-    );
+    let count = 0;
+    cartItems.map((item) => {
+      subTotal += item.attributes.price * item.attributes.quantity;
+      count += item.attributes.quantity;
+    });
     setCartSubTotal(subTotal);
+    setCartCount(count);
   }, [cartItems]);
 
   const handleAddToCart = (product, quantity) => {

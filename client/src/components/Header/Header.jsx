@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiCart, BiHeart, BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +6,14 @@ import Cart from "../Cart/Cart";
 import Search from "../Header/Search/Search";
 
 import "./Header.scss";
+import { Context } from "../../utils/context";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+  const { cartCount } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -41,7 +44,7 @@ const Header = () => {
             <BiHeart />
             <span className="cart-icon" onClick={() => setShowCart(!showCart)}>
               <BiCart />
-              <span>5</span>
+              <span>{cartCount}</span>
             </span>
           </div>
         </div>
