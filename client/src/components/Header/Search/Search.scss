@@ -73,10 +73,11 @@
         border-bottom: 1px solid #ccc;
         cursor: pointer;
         .img-container {
-          background-color: rgba(#8e2de2, 0.1);
+          background-color: rgba(coral, 0.2);
           border-radius: 40px;
           width: 60px;
           height: 60px;
+          flex-shrink: 0;
           img {
             width: 100%;
             height: 100%;

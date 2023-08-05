@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import {
   FaCartPlus,
   FaFacebookF,
@@ -6,13 +7,13 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+
 import useFetch from "../../hooks/useFetch";
+import { Context } from "../../utils/context";
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 
-import { useState, useContext } from "react";
-import { useParams } from "react-router-dom";
 import "./SingleProduct.scss";
-import { Context } from "../../utils/context";
 
 const SingleProduct = () => {
   const { id } = useParams();
