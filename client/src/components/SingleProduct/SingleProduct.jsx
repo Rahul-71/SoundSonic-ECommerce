@@ -48,7 +48,10 @@ const SingleProduct = () => {
         <div className="single-product-page">
           <div className="left">
             <img
-              src={process.env.REACT_APP_STRAPI_DEV_APP_URL + prodImg.url}
+              src={
+                // process.env.REACT_APP_STRAPI_DEV_APP_URL +
+                prodImg.url
+              }
               alt=""
             />
           </div>

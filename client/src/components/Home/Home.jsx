@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     getCategories();
     getProducts();
-  });
+  }, []);
 
   const getCategories = () => {
     // using query parameter populate=* to fetch all attributes related to the category
