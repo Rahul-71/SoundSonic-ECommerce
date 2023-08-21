@@ -98,6 +98,8 @@
     }
 
     .cart-footer {
+      position: sticky;
+      bottom: 0;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       .subtotal {
         padding: 20px 15px;
