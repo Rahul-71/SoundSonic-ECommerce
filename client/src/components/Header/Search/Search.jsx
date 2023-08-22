@@ -16,8 +16,6 @@ const Search = ({ setShowSearch }) => {
   if (!searchQuery.length) {
     searchResponse = [];
   }
-  // console.log("search response");
-  // console.log(searchResponse);
 
   return (
     <div className="search-modal">

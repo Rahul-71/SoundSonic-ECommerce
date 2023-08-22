@@ -13,12 +13,6 @@ const Category = () => {
 
   if (!prodData) return;
 
-  // console.log("products filtered by category id ::");
-  // console.log(prodData);
-
-  // console.log(
-  //   prodData.data.[0].attributes.categories.data.[0].attributes
-  // );
   const title = prodData.data[0].attributes.categories.data[0].attributes.title;
 
   return (

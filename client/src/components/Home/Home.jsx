@@ -19,16 +19,12 @@ const Home = () => {
     // using query parameter populate=* to fetch all attributes related to the category
     // this parameter is related to strapi
     fetchDataFromApi("/api/categories?populate=*").then((res) => {
-      // console.log("categories response: ");
-      // console.log(res);
       setCategories(res);
     });
   };
 
   const getProducts = () => {
     fetchDataFromApi("/api/products?populate=*").then((res) => {
-      // console.log("product response : ");
-      // console.log(res);
       setProducts(res);
     });
   };
