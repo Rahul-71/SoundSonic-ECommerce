@@ -6,7 +6,7 @@ const Category = ({ categories }) => {
 
   return (
     <>
-      {categories.data === undefined && <span>Loading categories...</span>}
+      {/* {categories.data === undefined && <span>Loading categories...</span>} */}
       {categories.data !== undefined && (
         <div className="shop-by-category">
           <div className="categories">
